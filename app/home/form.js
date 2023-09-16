@@ -3,6 +3,7 @@
 import React from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import { subjects, curriculum, learningApproaches, learningStyles } from "./dropdowns";
+import axios from 'axios';
 
 const initialValues = {
   grade: "",
@@ -35,9 +36,17 @@ const validate = (fields) => {
   return errors;
 };
 
-const onSubmit = ({ fields, setSubmitting }) => {
-    console.log(fields);
-  //!API REQUEST HERE
+const onSubmit = async ({ fields, setSubmitting }) => {
+    try {
+        const response = await axios.post('/api/route', {
+            prompt: fields
+        });
+        console.log('OpenAI API Response:', response.data);
+    } catch (error) {
+        console.error('Error querying OpenAI:', error);
+    }
+
+    setSubmitting(false);
 };
 
 const FormInput = () => (
