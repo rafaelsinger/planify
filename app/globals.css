@@ -18,5 +18,5 @@
 
 body {
   color: rgb(var(--foreground-rgb));
-  background: #121212;
+  background: rgba(49, 133, 252, 0.08);
 }
