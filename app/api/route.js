@@ -8,15 +8,17 @@ const openai = new OpenAI({
 
 const axios = require('axios');
 
-async function gptResponse(system, userAssistant) {
-  if (typeof system !== 'string') {
-    throw new Error('`system` should be a string (ex.: “You are a machine learning expert.” or “You are a data science expert.)');
-  }
+async function gptResponse(userAssistant) {
+//   if (typeof system !== 'string') {
+//     throw new Error('`system` should be a string (ex.: “You are a machine learning expert.” or “You are a data science expert.)');
+//   }
 
   if (!Array.isArray(userAssistant)) {
     throw new Error('`userAssistant` should be a list of prompts (ex: ["Explain what a neural network is."])');
   }
 
+  //if needed, can change system message depending on user input
+  const system = "You are an educational expert who excels at creating lesson plans.";
   const systemMessage = [{ role: 'system', content: system }];
 
   const userAssistantMessages = userAssistant.map((prompt, i) => ({
