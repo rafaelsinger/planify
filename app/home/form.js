@@ -15,6 +15,8 @@ const initialValues = {
   learningApproach: "",
   learningStyle: "",
   topic: "",
+  time: "",
+  numberOfClasses: "",
 };
 
 const requiredFields = [
@@ -24,6 +26,8 @@ const requiredFields = [
   "learningApproach",
   "learningStyle",
   "topic",
+  "time",
+  "numberOfClasses",
 ];
 
 const validate = (values) => {
@@ -91,6 +95,15 @@ const FormInput = () => (
           {/* conditionally render after state */}
           <Field type="text" name="district" placeholder='District' className='my-2' />
           <ErrorMessage name="district" component="div" />
+
+          <Field type="text" name="totalTopicTime" placeholder='Total Topic Time' className='my-2' />
+          <ErrorMessage name="time" component="div" />
+
+          <Field type="text" name="classTime" placeholder='Class Time' className='my-2' />
+          <ErrorMessage name="time" component="div" />
+
+          <Field type="text" name="numberOfClasses" placeholder='Number Of Classes' className='my-2' />
+          <ErrorMessage name="time" component="div" />
 
           <Field as="select" name="learningApproach" className='my-2'>
             <option value="" label="Learning Approach" />
