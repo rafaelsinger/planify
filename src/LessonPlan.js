@@ -4,15 +4,16 @@ import { useLocation } from "react-router-dom";
 
 const LessonPlan = () => {
 
-  const { state } = useLocation();
-  const lessonPlanFromState = state.lessonPlan;
+//   const { state } = useLocation();
+//   const lessonPlanFromState = state.lessonPlan;
 
-  const [lessonPlan, setLessonPlan] = useState(lessonPlanFromState);
+//   const [lessonPlan, setLessonPlan] = useState(lessonPlanFromState);
+  const [lessonPlan, setLessonPlan] = useState('sample text');
 
   return (
-    <div className="lesson-plan-container">
+    <div className="lesson-plan-container flex-col items-center justify-center">
       <h1>Lesson Plan</h1>
-        <textarea className="lesson-plan" value={lessonPlan} onChange={setLessonPlan} />
+        <textarea className="lesson-plan w-4/5 h-4/5 my-4" style={{"height": "90vh"}}value={lessonPlan} onChange={setLessonPlan} />
     </div>
   );
 };

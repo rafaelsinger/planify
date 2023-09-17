@@ -32,5 +32,8 @@ body {
   background-repeat: repeat; /* Prevent image repetition */
   min-height: 50vh; /* Ensure the container takes up at least the full viewport height */
   
+}
 
+.lesson-plan-container {
+  resize: none;
 }
