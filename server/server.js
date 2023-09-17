@@ -1,9 +1,10 @@
 const express = require('express');
 const axios = require('axios');
 const cors = require('cors');
+require('dotenv').config();
 
 const app = express();
-const port = 3001; // You can use any port
+const port = process.env.PORT || 3001; 
 
 app.use(express.json()); // for parsing application/json
 app.use(cors());
@@ -22,12 +23,14 @@ app.post('/gpt-response', async (req, res) => {
       { role: 'user', content: prompt } // Directly using the prompt here
     ];
 
-    const response = await axios.post('https://api.openai.com/v1/engines/gpt-3.5-turbo/completions', {
-      messages,
+    const response = await axios.post('https://api.openai.com/v1/chat/completions', 
+    {
+      "model": "gpt-3.5-turbo",
+      "messages" : messages,
     }, {
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': 'Bearer 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', // Replace with your OpenAI API key
+        'Authorization': `Bearer ${process.env.OPENAI_API_KEY}`,
       },
     });
 
