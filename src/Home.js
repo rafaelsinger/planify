@@ -4,6 +4,9 @@ import { subjects, curriculum, learningApproaches, learningStyles } from "./drop
 import "./form.css"
 import axios from 'axios';
 import { constructPrompt } from "./constructPrompt";
+import { useNavigate } from "react-router-dom";
+
+const navigate = useNavigate();
 
 const initialValues = {
   grade: "",
@@ -43,9 +46,8 @@ const validate = (values) => {
 const onSubmit = async (values, {setSubmitting}) => {
     const prompt = constructPrompt(values);
     try{
-        // console.log('in try');
         const response = await axios.post('http://localhost:3001/gpt-response', {prompt: prompt});
-        console.log(response);
+        navigate("/lesson-plan", { state: { lessonPlan: response } });
     } catch (error) {
         console.error(`Error: ${error}`);
     }
