@@ -3,6 +3,7 @@
 import React from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import { subjects, curriculum, learningApproaches, learningStyles } from "./dropdowns";
+import "./form.css"
 
 const initialValues = {
   grade: "",
@@ -48,7 +49,7 @@ const FormInput = () => (
       onSubmit={onSubmit}
     >
       {({ values, isSubmitting }) => (
-        <Form className="flex flex-col"> 
+        <Form className="flex flex-col" > 
           <Field type="text" name="grade" placeholder='Grade (K-12)' className='my-2' />
           <ErrorMessage name="grade" component="div" />
 

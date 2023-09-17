@@ -1,7 +1,10 @@
 import './globals.css'
 import { Inter } from 'next/font/google'
+import { Hepta_Slab } from 'next/font/google'
+import Image from 'next/image'
 
 const inter = Inter({ subsets: ['latin'] })
+const hepta_slab = Hepta_Slab({subsets: ["latin"]})
 
 export const metadata = {
   title: 'Create Next App',
@@ -11,7 +14,23 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={hepta_slab.className}>
+        <div className = "background-container">
+          {/* <div style = {{ display: 'flex',justifyContent: "center", alignItems: "center",padding: "70px" }}>
+ 
+            <Image classname = "notebook-paper"
+            src="/images/notebook_paper.jpg"
+            alt="Notebook Paper"
+            width={800}
+            height={500}
+
+            />
+           </div>       */}
+          {children}
+        </div>
+        
+      </body>
+
     </html>
   )
 }
