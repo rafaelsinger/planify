@@ -1,20 +1,18 @@
-import React from 'react';
+import React, {useState} from 'react';
 
 import { useLocation } from "react-router-dom";
 
 const LessonPlan = () => {
 
   const { state } = useLocation();
-  const { lessonPlan } = state
+  const lessonPlanFromState = state.lessonPlan;
+
+  const [lessonPlan, setLessonPlan] = useState(lessonPlanFromState);
 
   return (
     <div className="lesson-plan-container">
       <h1>Lesson Plan</h1>
-      {error ? (
-        <div className="error">{`Error: ${error}`}</div>
-      ) : (
-        <textarea className="lesson-plan" value={lessonPlan} onChange={handleLessonPlanChange} />
-      )}
+        <textarea className="lesson-plan" value={lessonPlan} onChange={setLessonPlan} />
     </div>
   );
 };

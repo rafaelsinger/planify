@@ -1,10 +1,11 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import { subjects, curriculum, learningApproaches, learningStyles } from "./dropdowns";
 import "./form.css"
 import axios from 'axios';
 import { constructPrompt } from "./constructPrompt";
 import { useNavigate } from "react-router-dom";
+import CircularProgress from '@mui/material/CircularProgress';
 
 const initialValues = {
   grade: "",
@@ -41,6 +42,7 @@ const validate = (values) => {
   return errors;
 };
 
+
 const FormInput = () => {
     const [lessonPlan, setLessonPlan] = useState("");
 
@@ -50,8 +52,9 @@ const FormInput = () => {
         try{
             const response = await axios.post('http://localhost:3001/gpt-response', {prompt: prompt});
             //!IDEALLY WE WANT THIS TO NAVIGATE
-            setLessonPlan(response.messageContent);
-            // navigate("/lesson-plan", { state: { lessonPlan: response.messageContent } });
+            // console.log('API Response:', response);
+            // setLessonPlan(response.data.messageContent);
+            navigate("/lesson-plan", { state: { lessonPlan: response.data.messageContent } });
 
         } catch (error) {
             console.error(`Error: ${error}`);
@@ -59,7 +62,6 @@ const FormInput = () => {
         setSubmitting(false);
     };
     return (
-        !lessonPlan ?
         <div className = "background-container">
         <div className="w-2/5 mx-auto">
             <Formik
@@ -68,6 +70,7 @@ const FormInput = () => {
             onSubmit={onSubmit}
             >
             {({ values, isSubmitting }) => (
+                !isSubmitting ?
                 <Form className="flex flex-col" > 
                 <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
                   <img
@@ -82,8 +85,8 @@ const FormInput = () => {
                 <Field type="text" name="grade" placeholder='Grade (K-12)' className='my-2' />
                 <ErrorMessage name="grade" component="div" />
 
-                            {/* Dropdown menu */}
-                    <Field as="select" name="subject" className='my-2'>
+                {/* Dropdown menu */}
+                <Field as="select" name="subject" className='my-2'>
                     <option value="" label="Select Subject" />
                     {subjects.map((subject, index) => (
                         <option key={index} value={subject} label={subject} />
@@ -135,20 +138,19 @@ const FormInput = () => {
                 <Field as="textarea" name="topic" placeholder='Topic' className='my-2' />
                 <ErrorMessage name="topic" component="div" />
 
-                    {/* shouldn't be able to resize textarea */}  
-                    <button type="submit" disabled={isSubmitting} className='text-white resize-none bg-blue-500 rounded-xl p-2'>
-                        Generate
-                    </button>
-                    </Form>
+                {/* shouldn't be able to resize textarea */}  
+                <button type="submit" disabled={isSubmitting} className='text-white resize-none bg-blue-500 rounded-xl p-2'>
+                    Generate
+                </button>
+                </Form>                
+                :
+                <div className="loading min-h-screen flex items-center justify-center">
+                    <CircularProgress />
+                </div>
                 )}
                 </Formik>
             </div>
             </div> 
-            :
-            <div className="lesson-plan-container">
-                <h1>Lesson Plan</h1>
-                <pre className="lesson-plan">{lessonPlan}</pre>
-            </div>
     );
 }
 
