@@ -1,19 +1,11 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 
 import { useLocation } from "react-router-dom";
 
 const LessonPlan = () => {
-  const [lessonPlan, setLessonPlan] = React.useState();
-  const [error, setError] = React.useState();
 
-  const getLessonPlan = () => {
-    const location = useLocation();
-    setLessonPlan(location.state.lessonPlan);
-  };
-
-  useEffect(() => {
-    getLessonPlan();
-  }, []);
+  const { state } = useLocation();
+  const { lessonPlan } = state
 
   return (
     <div className="lesson-plan-container">
