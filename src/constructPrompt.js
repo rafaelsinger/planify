@@ -1,8 +1,6 @@
 import { learningApproaches } from "./dropdowns";
 
 export const constructPrompt = (fields) => {
-    console.log(fields);
-
     // required
     const state = fields.state
     const subject = fields.subject

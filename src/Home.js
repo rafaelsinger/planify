@@ -41,11 +41,10 @@ const validate = (values) => {
 };
 
 const onSubmit = async (values, {setSubmitting}) => {
-    console.log('Submitting with values:', values); // Debug line
     const prompt = constructPrompt(values);
     try{
         // console.log('in try');
-        const response = await axios.post('/gpt-response', prompt);
+        const response = await axios.post('http://localhost:3001/gpt-response', {prompt: prompt});
         console.log(response);
     } catch (error) {
         console.error(`Error: ${error}`);

@@ -1,28 +1,26 @@
 const express = require('express');
 const axios = require('axios');
+const cors = require('cors');
 
 const app = express();
 const port = 3001; // You can use any port
 
 app.use(express.json()); // for parsing application/json
+app.use(cors());
 
 app.post('/gpt-response', async (req, res) => {
   try {
-    const userAssistant = req.body.userAssistant;
+    const { prompt } = req.body; // Destructuring single string prompt
 
-    if (!Array.isArray(userAssistant)) {
-      throw new Error('`userAssistant` should be a list of prompts (ex: ["Explain what a neural network is."])');
+    if (typeof prompt !== 'string') {
+      throw new Error('`prompt` should be a string (ex: "Explain what a neural network is.")');
     }
 
     const system = "You are an educational expert who excels at creating lesson plans.";
-    const systemMessage = [{ role: 'system', content: system }];
-
-    const userAssistantMessages = userAssistant.map((prompt, i) => ({
-      role: i % 2 === 0 ? 'user' : 'assistant',
-      content: prompt,
-    }));
-
-    const messages = [...systemMessage, ...userAssistantMessages];
+    const messages = [
+      { role: 'system', content: system },
+      { role: 'user', content: prompt } // Directly using the prompt here
+    ];
 
     const response = await axios.post('https://api.openai.com/v1/engines/gpt-3.5-turbo/completions', {
       messages,
