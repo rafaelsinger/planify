@@ -80,7 +80,7 @@ const FormInput = () => {
                   />
                 </div>
                 <div style={{ textAlign: 'center' }}>
-                  <p style={{ fontWeight: 'bold', fontSize: '24px' }}>Generate a Lesson Plan!</p>
+                  <p style={{ fontWeight: 'bold', fontSize: '24px', marginBottom: "10px"}}>Generate a Lesson Plan!</p>
                 </div>
                 <Field type="text" name="grade" placeholder='Grade (K-12)' className='my-2' />
                 <ErrorMessage name="grade" component="div" />
@@ -139,7 +139,7 @@ const FormInput = () => {
                 <ErrorMessage name="topic" component="div" />
 
                 {/* shouldn't be able to resize textarea */}  
-                <button type="submit" disabled={isSubmitting} className='text-white resize-none bg-blue-500 rounded-xl p-2'>
+                <button type="submit" disabled={isSubmitting} className='text-white resize-none bg-blue-500 rounded-xl p-2' style = {{marginTop:"18px"}}>
                     Generate
                 </button>
                 </Form>                
