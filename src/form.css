@@ -14,8 +14,16 @@
     */
     display: flex;
     justify-content: center;
-    margin-top: 120px;
+    margin-bottom: 50px;
 
 
-    /* font-family: "'Hepta Slab', Arial, sans-serif"; */
+    font-family: 'Hepta Slab', sans-serif;
+    
+  }
+
+.my-2 {
+  font-family: 'Hepta Slab', sans-serif;
+  border-radius: 5px;
+  text-align: left;
+  padding: 10px;
   }

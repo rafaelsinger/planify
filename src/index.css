@@ -18,7 +18,7 @@
 
 body {
   color: rgb(var(--foreground-rgb));
-  background: rgba(49, 133, 252, 0.08);
+  background: #d9e8fd;
   font-family: 'Hepta Slab', Arial, sans-serif;
 }
 
@@ -26,13 +26,13 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 70px;
+  padding: 0px;
   /* background-image: url('/images/notebook_paper.jpg'); Set the path to your image */
   background-size: contain; /* Adjust as needed to control the image size */
   background-position: center; /* Center the image horizontally and vertically */
   background-repeat: no-repeat; /* Prevent image repetition */
-  min-height: 130vh; /* Ensure the container takes up at least the full viewport height */
-  margin-top: 50px; /* Adjust as needed */
+  min-height: 50vh; /* Ensure the container takes up at least the full viewport height */
+  margin-top: 20px; /* Adjust as needed */
   margin-bottom: 20px; /* Adjust as needed */
 }
 
