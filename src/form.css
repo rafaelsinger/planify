@@ -19,6 +19,11 @@
 
     font-family: 'Hepta Slab', sans-serif;
     
+    background-color: #d9e8fd; /* Replace with your desired color code or name */
+    width: 100%; /* Optionally, set the width to fill the parent container */
+    height: 100%; /* Optionally, set the height to fill the parent container */
+    border: 4px solid #d9e8fd;
+    
   }
 
 .my-2 {

@@ -26,12 +26,11 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 0px;
-  background-image: "/images/planify_background.PNG"; /*Set the path to your image */
+  background-image: url("../public/images/planify_background.PNG"); /*Set the path to your image */
   background-size: cover; /* Adjust as needed to control the image size */
   background-position: center; /* Center the image horizontally and vertically */
   background-repeat: repeat; /* Prevent image repetition */
   min-height: 50vh; /* Ensure the container takes up at least the full viewport height */
   margin-top: 20px; /* Adjust as needed */
-  margin-bottom: 20px; /* Adjust as needed */
+  margin-bottom: 0px; /* Adjust as needed */
 }
