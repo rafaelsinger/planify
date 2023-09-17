@@ -21,7 +21,7 @@ const LessonPlan = () => {
       {error ? (
         <div className="error">{`Error: ${error}`}</div>
       ) : (
-        <pre className="lesson-plan">{lessonPlan}</pre>
+        <textarea className="lesson-plan" value={lessonPlan} onChange={handleLessonPlanChange} />
       )}
     </div>
   );
