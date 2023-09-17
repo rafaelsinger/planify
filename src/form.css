@@ -1,0 +1,21 @@
+.flex.flex-col {
+    /* Adjust the container's background color
+    background-color: #f0f0f0;
+  
+
+    padding: 20px;
+
+    border: 1px solid #ccc;
+  
+
+    gap: 10px;
+  
+    align-items: center; 
+    */
+    display: flex;
+    justify-content: center;
+    margin-top: 120px;
+
+
+    /* font-family: "'Hepta Slab', Arial, sans-serif"; */
+  }
