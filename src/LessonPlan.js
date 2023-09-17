@@ -4,11 +4,10 @@ import { useLocation } from "react-router-dom";
 
 const LessonPlan = () => {
 
-//   const { state } = useLocation();
-//   const lessonPlanFromState = state.lessonPlan;
+  const { state } = useLocation();
+  const lessonPlanFromState = state.lessonPlan;
 
-//   const [lessonPlan, setLessonPlan] = useState(lessonPlanFromState);
-  const [lessonPlan, setLessonPlan] = useState('sample text');
+  const [lessonPlan, setLessonPlan] = useState(lessonPlanFromState);
 
   return (
     <div className="lesson-plan-container flex-col items-center justify-center">
