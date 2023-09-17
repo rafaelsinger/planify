@@ -4,6 +4,8 @@ import React from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import { subjects, curriculum, learningApproaches, learningStyles } from "./dropdowns";
 import "./form.css"
+import axios from 'axios';
+import { constructPrompt } from "./constructPrompt";
 
 const initialValues = {
   grade: "",
@@ -14,6 +16,8 @@ const initialValues = {
   learningApproach: "",
   learningStyle: "",
   topic: "",
+  time: "",
+  numberOfClasses: "",
 };
 
 const requiredFields = [
@@ -23,12 +27,14 @@ const requiredFields = [
   "learningApproach",
   "learningStyle",
   "topic",
+  "time",
+  "numberOfClasses",
 ];
 
-const validate = (fields) => {
+const validate = (values) => {
   const errors = {};
   for (const reqField of requiredFields) {
-    if (!fields[reqField]) {
+    if (!values[reqField]) {
       errors[reqField] = "Required";
     }
   }
@@ -36,9 +42,22 @@ const validate = (fields) => {
   return errors;
 };
 
-const onSubmit = ({ fields, setSubmitting }) => {
-    console.log(fields);
-  //!API REQUEST HERE
+const onSubmit = async ({values, setSubmitting}) => {
+    console.log('Submitting with values:', values); // Debug line
+    const prompt = constructPrompt(values);
+    try{
+        console.log('in try');
+    } catch (error) {
+        console.error(`Error: ${error}`);
+    }
+    // try {
+    //     const response = await axios.post('/api/route', {prompt});
+    //     console.log('OpenAI API Response:', response.data);
+    // } catch (error) {
+    //     console.error('Error querying OpenAI:', error);
+    // }
+
+    setSubmitting(false);
 };
 
 const FormInput = () => (
@@ -77,6 +96,15 @@ const FormInput = () => (
           {/* conditionally render after state */}
           <Field type="text" name="district" placeholder='District' className='my-2' />
           <ErrorMessage name="district" component="div" />
+
+          <Field type="text" name="totalTopicTime" placeholder='Total Topic Time' className='my-2' />
+          <ErrorMessage name="time" component="div" />
+
+          <Field type="text" name="classTime" placeholder='Class Time' className='my-2' />
+          <ErrorMessage name="time" component="div" />
+
+          <Field type="text" name="numberOfClasses" placeholder='Number Of Classes' className='my-2' />
+          <ErrorMessage name="time" component="div" />
 
           <Field as="select" name="learningApproach" className='my-2'>
             <option value="" label="Learning Approach" />

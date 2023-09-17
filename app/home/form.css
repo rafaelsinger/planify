@@ -1,0 +1,21 @@
+
+
+.flex.flex-col {
+    /* Adjust the container's background color */
+    background-color: #f0f0f0;
+  
+    /* Set a padding for the container */
+    padding: 20px;
+  
+    /* Set a border for the container */
+    border: 1px solid #ccc;
+  
+    /* Add some spacing between flex items (child elements) */
+    gap: 10px;
+  
+    /* Center the content horizontally and vertically within the container */
+    align-items: center;
+    justify-content: center;
+
+    font-family: "'Hepta Slab', Arial, sans-serif";
+  }
