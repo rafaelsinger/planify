@@ -40,7 +40,7 @@ const validate = (values) => {
   return errors;
 };
 
-const onSubmit = async ({values, setSubmitting}) => {
+const onSubmit = async (values, {setSubmitting}) => {
     console.log('Submitting with values:', values); // Debug line
     const prompt = constructPrompt(values);
     try{
@@ -59,10 +59,11 @@ const onSubmit = async ({values, setSubmitting}) => {
 };
 
 const FormInput = () => (
+<div className = "background-container">
   <div className="w-2/5 mx-auto">
     <Formik
       initialValues={initialValues}
-      validate={validate}
+    //   validate={validate}
       onSubmit={onSubmit}
     >
       {({ values, isSubmitting }) => (
@@ -70,58 +71,58 @@ const FormInput = () => (
           <Field type="text" name="grade" placeholder='Grade (K-12)' className='my-2' />
           <ErrorMessage name="grade" component="div" />
 
-          {/* Dropdown menu */}
-          <Field as="select" name="subject" className='my-2'>
-            <option value="" label="Select Subject" />
-            {subjects.map((subject, index) => (
-                <option key={index} value={subject} label={subject} />
-            ))}
-          </Field>
-          <ErrorMessage name="subject" component="div" />
-        
-          {/* needs to be conditionally rendered if subject was touched/no errors*/}
-          <Field as="select" name="curriculum" className='my-2'>
-            <option value="" label="Select Standardized Curriculum (Optional)" />
-            {curriculum.map((curriculum, index) => (
-                <option key={index} value={curriculum} label={curriculum} />
-            ))}
-          </Field>
-          <ErrorMessage name="curriculum" component="div" />
+                  {/* Dropdown menu */}
+        <Field as="select" name="subject" className='my-2'>
+        <option value="" label="Select Subject" />
+        {subjects.map((subject, index) => (
+            <option key={index} value={subject} label={subject} />
+        ))}
+      </Field>
+      <ErrorMessage name="subject" component="div" />
+    
+      {/* needs to be conditionally rendered if subject was touched/no errors*/}
+      <Field as="select" name="curriculum" className='my-2'>
+        <option value="" label="Select Standardized Curriculum (Optional)" />
+        {curriculum.map((curriculum, index) => (
+            <option key={index} value={curriculum} label={curriculum} />
+        ))}
+      </Field>
+      <ErrorMessage name="curriculum" component="div" />
 
-          <Field type="text" name="state" placeholder='State' className='my-2' />
-          <ErrorMessage name="state" component="div" />
+      <Field type="text" name="state" placeholder='State' className='my-2' />
+      <ErrorMessage name="state" component="div" />
 
-          {/* conditionally render after state */}
-          <Field type="text" name="district" placeholder='District' className='my-2' />
-          <ErrorMessage name="district" component="div" />
+      {/* conditionally render after state */}
+      <Field type="text" name="district" placeholder='District' className='my-2' />
+      <ErrorMessage name="district" component="div" />
 
-          <Field type="text" name="totalTopicTime" placeholder='Total Topic Time' className='my-2' />
-          <ErrorMessage name="time" component="div" />
+      <Field type="text" name="totalTopicTime" placeholder='Total Topic Time' className='my-2' />
+      <ErrorMessage name="totalTopicTime" component="div" />
 
-          <Field type="text" name="classTime" placeholder='Class Time' className='my-2' />
-          <ErrorMessage name="time" component="div" />
+      <Field type="text" name="classTime" placeholder='Class Time' className='my-2' />
+      <ErrorMessage name="classTime" component="div" />
 
-          <Field type="text" name="numberOfClasses" placeholder='Number Of Classes' className='my-2' />
-          <ErrorMessage name="time" component="div" />
+      <Field type="text" name="numberOfClasses" placeholder='Number Of Classes' className='my-2' />
+      <ErrorMessage name="numberOfClasses" component="div" />
 
-          <Field as="select" name="learningApproach" className='my-2'>
-            <option value="" label="Learning Approach" />
-            {learningApproaches.map((learningApproach, index) => (
-                <option key={index} value={learningApproach} label={learningApproach} />
-            ))}
-          </Field>
-          <ErrorMessage name="learningApproach" component="div" />
+      <Field as="select" name="learningApproach" className='my-2'>
+        <option value="" label="Learning Approach" />
+        {learningApproaches.map((learningApproach, index) => (
+            <option key={index} value={learningApproach} label={learningApproach} />
+        ))}
+      </Field>
+      <ErrorMessage name="learningApproach" component="div" />
 
-          <Field as="select" name="learningStyle" className='my-2'>
-            <option value="" label="Learning Style" />
-            {learningStyles.map((learningStyle, index) => (
-                <option key={index} value={learningStyle} label={learningStyle} />
-            ))}
-          </Field>
-          <ErrorMessage name="learningStyle" component="div" />
-          
-          <Field as="textarea" name="topic" placeholder='Topic' className='my-2' />
-          <ErrorMessage name="topic" component="div" />
+      <Field as="select" name="learningStyle" className='my-2'>
+        <option value="" label="Learning Style" />
+        {learningStyles.map((learningStyle, index) => (
+            <option key={index} value={learningStyle} label={learningStyle} />
+        ))}
+      </Field>
+      <ErrorMessage name="learningStyle" component="div" />
+      
+      <Field as="textarea" name="topic" placeholder='Topic' className='my-2' />
+      <ErrorMessage name="topic" component="div" />
 
           {/* shouldn't be able to resize textarea */}  
           <button type="submit" disabled={isSubmitting} className='text-white resize-none bg-blue-500 rounded-xl p-2'>
@@ -131,6 +132,7 @@ const FormInput = () => (
       )}
     </Formik>
   </div>
+</div> 
 );
 
 export default FormInput;

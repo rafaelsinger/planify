@@ -1,13 +1,44 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* :root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
+} */
+
+/* @media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 0, 0, 0;
+    --background-end-rgb: 0, 0, 0;
+  }
+} */
+
 body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  color: rgb(var(--foreground-rgb));
+  background: rgba(49, 133, 252, 0.08);
+  font-family: 'Hepta Slab', Arial, sans-serif;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.background-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 70px;
+  /* background-image: url('/images/notebook_paper.jpg'); Set the path to your image */
+  background-size: contain; /* Adjust as needed to control the image size */
+  background-position: center; /* Center the image horizontally and vertically */
+  background-repeat: no-repeat; /* Prevent image repetition */
+  min-height: 130vh; /* Ensure the container takes up at least the full viewport height */
+  margin-top: 50px; /* Adjust as needed */
+  margin-bottom: 20px; /* Adjust as needed */
 }
+
+/* .notebook-paper {
+  display: flex;
+  justify-content: center; 
+  align-items: center; 
+  min-height: 100vh; 
+} */
